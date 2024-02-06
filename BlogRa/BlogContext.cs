@@ -1,4 +1,5 @@
 ﻿using BlogRa.Mapping;
+using BlogRa.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace BlogRa
@@ -10,6 +11,7 @@ namespace BlogRa
             
         }
 
+        public DbSet<Article> Articles { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

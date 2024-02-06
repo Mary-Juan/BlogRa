@@ -5,37 +5,58 @@
 }
 
 <div class="col-12 ">
+    
+    @if (Model.SuccessMessage != null)
+    {
+        <div class="alert alert-success">
+            @Model.SuccessMessage
+        </div>
+    }
+
+    @if (Model.ErrorMessage != null)
+    {
+        <div class="alert alert-danger">
+            @Model.ErrorMessage
+        </div>
+    }
+
     <div class="col-6 mx-auto text-center">
         <h1 class="border-bottom">ایجاد مقاله جدید</h1>
     </div>
 </div>
 
-<form class="mr-auto ml-auto">
+<form class="mr-auto ml-auto" method="post">
     <div class="form-row">
         <div class="form-group col-md-6">
-            <label for="title">عنوان مقاله</label>
-            <input class="form-control" id="title" name="title">
+            <label asp-for=@Model.Article.Title for="title">عنوان مقاله</label>
+            <input asp-for=@Model.Article.Title class="form-control" id="title" name="Title">
+            <span asp-validation-for=@Model.Article.Title class="text-danger"></span>
         </div>
         <div class="form-group col-md-6">
-            <label for="picture">عکس</label>
-            <input class="form-control" id="picture" name="picture">
+            <label asp-for=@Model.Article.Picture for="picture">عکس</label>
+            <input asp-for=@Model.Article.Picture class="form-control" id="picture" name="Picture">
+            <span asp-validation-for=@Model.Article.Picture class="text-danger"></span>
         </div>
         <div class="form-group col-md-6">
-            <label for="picuteAlt">ALT عکس</label>
-            <input class="form-control" id="picuteAlt" name="picuteAlt">
+            <label asp-for=@Model.Article.PictureAlt for="picuteAlt">ALT عکس</label>
+            <input asp-for=@Model.Article.PictureAlt class="form-control" id="picuteAlt" name="PictureAlt">
+            <span asp-validation-for=@Model.Article.PictureAlt class="text-danger"></span>
         </div>
         <div class="form-group col-md-6">
-            <label for="pictureTitle">Title عکس</label>
-            <input class="form-control" id="pictureTitle" name="pictureTitle">
+            <label asp-for=@Model.Article.PictureTitle for="pictureTitle">Title عکس</label>
+            <input asp-for=@Model.Article.PictureTitle class="form-control" id="pictureTitle" name="PictureTitle">
+            <span asp-validation-for=@Model.Article.PictureTitle class="text-danger"></span>
         </div>
         <div class="form-group col-md-12">
-            <label for="smallDescription">توضیحات کوتاه</label>
-            <textarea class="form-control" id="smallDescription" name="smallDescription"></textarea>
+            <label asp-for=@Model.Article.ShortDescription for="smallDescription">توضیحات کوتاه</label>
+            <textarea asp-for=@Model.Article.ShortDescription class="form-control" id="smallDescription" name="ShortDescription"></textarea>
+            <span asp-validation-for=@Model.Article.ShortDescription class="text-danger"></span>
         </div>
     </div>
     <div class="form-group">
-        <label for="body">متن مقاله</label>
-        <textarea rows="5" type="text" class="form-control" id="body"></textarea>
+        <label asp-for=@Model.Article.Body for="body">متن مقاله</label>
+        <textarea asp-for=@Model.Article.Body rows="5" type="text" class="form-control" id="body" name="Body"></textarea>
+        <span asp-validation-for=@Model.Article.Body class="text-danger"></span>
     </div>
     <button type="submit" class="btn btn-success">ارسال</button>
 </form>
